@@ -1,0 +1,31 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# User API
+GET     /api/user              controllers.UserRestController.listUsers
+POST    /api/user              controllers.UserRestController.createUser
+GET     /api/user/:id          controllers.UserRestController.getUser(id:Long)
+DELETE  /api/user/:id          controllers.UserRestController.deleteUser(id:Long)
+DELETE  /api/user/:id          controllers.UserRestController.deleteUser(id:Long)
+
+
+# Message API
+GET     /api/message           controllers.MessageRestController.listMessages
+POST    /api/message/:id       controllers.MessageRestController.createMessage(id:Long)
+DELETE  /api/message/:id       controllers.MessageRestController.deleteMessage(id:Long)
+PUT     /api/message/:id       controllers.MessageRestController.updateMessage(id:Long)
+
+
+# Serve index page from public directory
+GET     /                           controllers.FrontendController.index()
+
+# An example route (Prefix all API routes with apiPrefix defined in application.conf)
+GET     /api/summary                controllers.HomeController.appSummary
+
+# Serve static assets under public directory
+GET     /*file                      controllers.FrontendController.assetOrDefault(file)
+
+# Test post request
+POST    /api/postTest               controllers.HomeController.postTest()
+
