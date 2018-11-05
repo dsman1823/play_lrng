@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { AppService } from './app.service';
+import {MessageService} from "./message.service";
 
 @Component({
   selector: 'app-root',
@@ -9,12 +10,18 @@ import { AppService } from './app.service';
 })
 export class AppComponent {
   title: string;
+  message: any;
   postRequestResponse: string;
 
-  constructor(private appService: AppService) {
-    this.appService.getWelcomeMessage().subscribe((data: any) => {
-      this.title = data.content;
+  constructor(private appService: AppService, private messageService: MessageService) {
+    this.messageService.getAllMessages().subscribe((data: any) => {
+      console.log("*******************************");
+      console.log(data.response[0]);
+      console.log("*******************************");
+      this.message = data.response[0];
     });
+
+    this.postRequestResponse = "ASD";
   }
 
   /**
@@ -22,7 +29,10 @@ export class AppComponent {
    */
   public postData(): void {
     this.appService.sendData().subscribe((data: any) => {
-      this.postRequestResponse = data.content;
+      // console.log("!!!!!!!!!!!!");
+      // console.log(data);
+      // console.log("!!!!!!!!!!!!");
+      // this.postRequestResponse = data.content;
     });
   }
 }

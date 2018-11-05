@@ -25,7 +25,8 @@ public class UserRestController {
             u.getMessages().forEach(m -> m.setAuthor(null));
         });
         JsonNode jsonData = mapper.convertValue(users, JsonNode.class);
-        return ok(ApplicationUtil.createResponse(jsonData, true));
+//        return ok(ApplicationUtil.createResponse(jsonData, true));
+        return ok(jsonData).as("application/json");
     }
 
     public Result getUser(long id) {

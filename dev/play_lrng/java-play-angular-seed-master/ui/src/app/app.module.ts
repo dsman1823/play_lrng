@@ -7,9 +7,16 @@ import { AppComponent } from './app.component';
 import { RouteExampleComponent } from './route-example/route-example.component';
 
 import { AppService } from './app.service';
+import {MessageService} from "./message.service";
+
 import { AppHttpInterceptorService } from './http-interceptor.service';
+import { HomeComponent } from './home/home.component';
+import { MessagesComponent } from './messages/messages.component';
+import { MessageComponent } from './message/message.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
   {
     path: 'java',
     component: RouteExampleComponent,
@@ -35,7 +42,10 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    RouteExampleComponent
+    RouteExampleComponent,
+    HomeComponent,
+    MessagesComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule,

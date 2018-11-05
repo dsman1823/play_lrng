@@ -30,6 +30,6 @@ export class AppService {
    * Makes a http post request to send some data to backend & get response.
    */
   public sendData(): Observable<any> {
-    return this.http.post(this.dataPostTestUrl, {});
+    return this.http.get("/api/user");
   }
 }
